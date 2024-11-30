@@ -1,0 +1,53 @@
+.main {
+  background-image: url("../../img/backgroundX1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  overflow: hidden;
+  padding: 260px 805px 260px 64px;
+}
+
+@media (min-width: 1440px) {
+  .main {
+    background-image: url("../../img/backgroundX2.jpg");
+  }
+}
+
+.wrapper {
+  width: 571px;
+  height: 176px;
+}
+
+.title {
+  font: inherit;
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 67%;
+  color: #f7f7f7;
+}
+
+.text {
+  font: inherit;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 133%;
+  margin: 0;
+  margin-bottom: 57px;
+  color: #f7f7f7;
+}
+
+.link {
+  border: 1px solid transparent;
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 173px;
+  height: 56px;
+  background-color: #e44848;
+  font-size: 16px;
+  color: #f7f7f7;
+}
+
+.link:hover {
+  cursor: pointer;
+  background-color: #d84343;
+}

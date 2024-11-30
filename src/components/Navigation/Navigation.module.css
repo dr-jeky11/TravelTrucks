@@ -1,0 +1,22 @@
+.header {
+  background-color: #f7f7f7;
+  display: flex;
+  padding: 28px 64px;
+  margin: 0 auto;
+}
+
+.logo {
+  margin-right: 457px;
+}
+
+.home {
+  margin-right: 32px;
+  color: #101828;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.active {
+  color: red;
+  margin-right: 32px;
+}
