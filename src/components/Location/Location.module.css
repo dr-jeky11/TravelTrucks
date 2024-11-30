@@ -1,0 +1,22 @@
+.section {
+  margin-bottom: 40px;
+}
+
+.text {
+  border-radius: 12px;
+  border-color: transparent;
+  padding: 18px 46px 18px 46px;
+  width: 360px;
+  height: 56px;
+  background-color: #f7f7f7;
+  background-image: url("../../img/map.svg");
+  background-repeat: no-repeat;
+  background-position: 18px;
+  color: black;
+}
+
+.text:focus {
+  background-image: url("../../img/map-active.svg");
+  border-color: none;
+  outline: none;
+}

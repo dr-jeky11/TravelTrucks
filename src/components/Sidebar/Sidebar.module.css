@@ -1,0 +1,13 @@
+.sidebar {
+  width: 360px;
+  float: left;
+  margin-right: 50px;
+}
+
+.text {
+  margin-bottom: 8px;
+}
+
+.filters {
+  margin-bottom: 32px;
+}
