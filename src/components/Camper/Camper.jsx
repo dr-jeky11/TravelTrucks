@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import heart from "../../img/heart.svg";
 import heartRed from "../../img/heartRed.svg";
 import location from "../../img/map-active.svg";
-import star from "../../img/star.svg";
+import star from "../../img/Star.svg";
 import transmission from "../../img/Transmission.svg";
 import petrol from "../../img/Petrol.svg";
-import kitchen from "../../img/kitchen.svg";
-import ac from "../../img/ac.svg";
+import kitchen from "../../img/Kitchen.svg";
+import ac from "../../img/AC.svg";
 
 import s from "./Camper.module.css";
 

@@ -1,4 +1,4 @@
-import star from "../../img/star.svg";
+import star from "../../img/Star.svg";
 import location from "../../img/map-active.svg";
 
 import s from "./CamperCard.module.css";

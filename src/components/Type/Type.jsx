@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import van from "../../img/van.svg";
+import van from "../../img/Van.svg";
 import fullyIntegrated from "../../img/FullyIntegrated.svg";
 import alcove from "../../img/Alcove.svg";
 
@@ -10,7 +10,11 @@ export default function TypeVehicle({ onChange, selectedValues }) {
   const [checkedItem, setCheckedItems] = useState(selectedValues || []);
   const typeOptions = [
     { value: "panelTruck", label: "Van", icon: van },
-    { value: "fullyIntegrated", label: "Fully Integrated", icon: fullyIntegrated },
+    {
+      value: "fullyIntegrated",
+      label: "Fully Integrated",
+      icon: fullyIntegrated,
+    },
     { value: "alcove", label: "Alcove", icon: alcove },
   ];
 

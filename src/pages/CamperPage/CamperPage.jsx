@@ -1,9 +1,11 @@
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import CamperCard from "../../components/CamperCard/CamperCard";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSelectedCamper } from "../../redux/selectors";
 import { useEffect } from "react";
 import { idCamper } from "../../redux/operations";
+
+import CamperCard from "../../components/CamperCard/CamperCard";
+
 import s from "./CamperPage.module.css";
 
 export default function CamperPage() {

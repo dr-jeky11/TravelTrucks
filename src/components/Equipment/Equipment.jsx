@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import ac from "../../img/ac.svg";
-import transmission from "../../img/transmission.svg";
-import kitchen from "../../img/kitchen.svg";
-import tv from "../../img/tv.svg";
-import bathroom from "../../img/bathroom.svg";
+import ac from "../../img/AC.svg";
+import transmission from "../../img/Transmission.svg";
+import kitchen from "../../img/Kitchen.svg";
+import tv from "../../img/TV.svg";
+import bathroom from "../../img/Bathroom.svg";
 
 import s from "./Equipment.module.css";
 
