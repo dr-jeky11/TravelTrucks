@@ -1,15 +1,27 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import s from "./NotFoundPage.module.css";
 
-export default function NotFoundPage() {
-  const navigate = useNavigate();
-  const handleGoHome = () => {
-    navigate("/");
-  };
+const NotFoundPage = () => {
   return (
-    <>
-      <h1>Page Not Found</h1>
-      <p>Sorry, the page you are looking for does not exist.</p>
-      <button onClick={handleGoHome}>Go to Home Page</button>
-    </>
+    <div className={s.notFoundContainer}>
+      <h1>PAGE NOT FOUND</h1>
+      <p className={s.zoomArea}>
+        <b>Oops!</b> Sorry, we can't find that page!
+      </p>
+      <section className={s.errorContainer}>
+        <span>4</span>
+        <span>
+          <span className={s.screenReaderText}>0</span>
+        </span>
+        <span>4</span>
+      </section>
+      <div className={s.linkContainer}>
+        <Link to="/" className={s.moreLink}>
+          Go back to Home
+        </Link>
+      </div>
+    </div>
   );
-}
+};
+
+export default NotFoundPage;

@@ -21,11 +21,14 @@ export default function CardReviews() {
     const totalStars = 5;
     const stars = [];
     for (let i = 0; i < totalStars; i++) {
-      if (i < rating) {
-        stars.push(<img key={i} src={starActive} />);
-      } else {
-        stars.push(<img key={i} src={star} />);
-      }
+      stars.push(
+        <img
+          key={i}
+          src={i < rating ? starActive : star}
+          alt="star"
+          style={{ display: "inline-block" }}
+        />
+      );
     }
     return stars;
   };

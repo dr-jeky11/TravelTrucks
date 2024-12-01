@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import CampersList from "../../components/CampersList/CampersList";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import { Loader } from "../../components/Loader/Loader";
 
 import s from "./CatalogPage.module.css";
 
 export default function CatalogPage() {
   const [filter, isSetFilter] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const savedFilters = {
@@ -29,17 +31,21 @@ export default function CatalogPage() {
     };
 
     isSetFilter(searchFilters);
+    setIsLoading(false);
   }, []);
 
   const handleSearch = (newFilters) => {
+    setIsLoading(true);
     isSetFilter(newFilters);
+    setIsLoading(false);
   };
 
   return (
     <main className={s.container}>
+      {isLoading && <Loader />}
       <div className={s.catalog}>
         <Sidebar onSearch={handleSearch} />
-        <CampersList filter={filter} />
+        {!isLoading && <CampersList filter={filter} />}
       </div>
     </main>
   );

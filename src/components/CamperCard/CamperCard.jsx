@@ -1,4 +1,4 @@
-import star from "../../img/Star.svg";
+import starActive from "../../img/starActive.svg";
 import location from "../../img/map-active.svg";
 
 import s from "./CamperCard.module.css";
@@ -12,7 +12,7 @@ export default function CamperCard({ camper }) {
           <li>
             <ul className={s.ratingLocation}>
               <li className={s.reviews}>
-                <img className={s.locRev} src={star} alt="star" />
+                <img className={s.locRev} src={starActive} alt="star" />
                 {camper.rating} Reviews
               </li>
               <li className={s.reviews}>

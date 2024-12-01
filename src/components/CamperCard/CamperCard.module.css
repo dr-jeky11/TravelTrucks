@@ -18,7 +18,7 @@ ul {
 }
 
 .ratingLocation {
-  width: 267px;
+  width: 320px;
   height: 24px;
   display: flex;
   gap: 16px;
@@ -82,6 +82,7 @@ ul {
 }
 
 .description {
+  margin-top: 28px;
   width: 1312px;
 }
 
