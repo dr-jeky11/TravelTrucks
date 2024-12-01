@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectSelectedCamper } from "../../redux/Catalog/selectors";
+import { selectSelectedCamper } from "../../redux/selectors";
 import { useEffect } from "react";
 
 import { idCamper } from "../../redux/operations";
@@ -16,7 +16,7 @@ import microwave from "../../img/Microwave.svg";
 import gas from "../../img/Gas.svg";
 import water from "../../img/water.svg";
 
-import s from "./CardFeature.module.css";
+import s from "./CardFeatures.module.css";
 
 import Form from "../Form/Form";
 
@@ -60,13 +60,9 @@ export default function CardFeature() {
           </li>
           {camper.kitchen && (
             <li className={s.character}>
-              <div className={css.iconCharacters}>
-                <img
-                  className={css.iconCharacter}
-                  src={kitchen}
-                  alt="kitchen"
-                />
-                <p className={css.nameCharacter}>Kitchen</p>
+              <div className={s.iconCharacters}>
+                <img className={s.iconCharacter} src={kitchen} alt="kitchen" />
+                <p className={s.nameCharacter}>Kitchen</p>
               </div>
             </li>
           )}
@@ -80,9 +76,9 @@ export default function CardFeature() {
           )}
           {camper.radio && (
             <li className={s.character}>
-              <div className={css.iconCharacters}>
-                <img className={css.iconCharacter} src={radio} alt="radio" />
-                <p className={css.nameCharacter}>Radio</p>
+              <div className={s.iconCharacters}>
+                <img className={s.iconCharacter} src={radio} alt="radio" />
+                <p className={s.nameCharacter}>Radio</p>
               </div>
             </li>
           )}
@@ -118,7 +114,7 @@ export default function CardFeature() {
                   src={microwave}
                   alt="microwave"
                 />
-                <p className={css.nameCharacter}>Microwave</p>
+                <p className={s.nameCharacter}>Microwave</p>
               </div>
             </li>
           )}

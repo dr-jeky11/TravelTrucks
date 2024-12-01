@@ -3,7 +3,7 @@ import location from "../../img/map-active.svg";
 
 import s from "./CamperCard.module.css";
 
-export default function CamperDetails({ camper }) {
+export default function CamperCard({ camper }) {
   return (
     <ul>
       <li className={s.listOne}>
