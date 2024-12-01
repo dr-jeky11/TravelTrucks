@@ -1,13 +1,29 @@
 .sidebar {
-  width: 360px;
-  float: left;
-  margin-right: 50px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
+  margin-top: 40px;
+  margin-bottom: 0;
 }
 
-.text {
-  margin-bottom: 8px;
+.button {
+  border: none;
+  border-radius: 200px;
+  padding: 16px 40px;
+  width: 166px;
+  height: 56px;
+  background-color: #e44848;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: white;
+  cursor: pointer;
 }
 
-.filters {
-  margin-bottom: 32px;
+.button:hover {
+  background-color: #d84343;
 }

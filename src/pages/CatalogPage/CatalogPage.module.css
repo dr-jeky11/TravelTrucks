@@ -1,5 +1,12 @@
-.main {
-  display: flex;
+.container {
   width: 1440px;
-  padding: 48px 64px 0 64px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 64px;
+  padding-top: 48px;
+}
+
+.catalog {
+  display: flex;
+  gap: 54px;
 }
