@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import heart from "../../img/heart.svg";
 import heartRed from "../../img/heartRed.svg";
 import location from "../../img/map-active.svg";
-import star from "../../img/starActive.svg";
+import star from "../../img/StarActive.svg";
 import transmission from "../../img/Transmission.svg";
 import petrol from "../../img/Petrol.svg";
 import kitchen from "../../img/Kitchen.svg";
