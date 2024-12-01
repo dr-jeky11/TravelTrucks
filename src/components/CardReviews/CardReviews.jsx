@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { selectSelectedCamper } from "../../redux/selectors";
 import { useEffect } from "react";
 import { idCamper } from "../../redux/operations";
-import starActive from "../../img/starActive.svg";
+import starActive from "../../img/StarActive.svg";
 import star from "../../img/Star.svg";
 import Form from "../Form/Form";
 import s from "./CardReviews.module.css";
