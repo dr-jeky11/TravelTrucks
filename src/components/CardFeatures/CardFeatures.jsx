@@ -6,15 +6,15 @@ import { useEffect } from "react";
 import { idCamper } from "../../redux/operations";
 
 import transmission from "../../img/Transmission.svg";
-import petrol from "../../img/petrol.svg";
-import kitchen from "../../img/kitchen.svg";
-import ac from "../../img/ac.svg";
-import radio from "../../img/radio.svg";
-import bathroom from "../../img/bathroom.svg";
-import refrigerator from "../../img/refrigerator.svg";
+import petrol from "../../img/Petrol.svg";
+import kitchen from "../../img/Kitchen.svg";
+import ac from "../../img/AC.svg";
+import radio from "../../img/Radio.svg";
+import bathroom from "../../img/Bathroom.svg";
+import refrigerator from "../../img/Refrigerator.svg";
 import microwave from "../../img/Microwave.svg";
 import gas from "../../img/Gas.svg";
-import water from "../../img/water.svg";
+import water from "../../img/Water.svg";
 
 import s from "./CardFeatures.module.css";
 
