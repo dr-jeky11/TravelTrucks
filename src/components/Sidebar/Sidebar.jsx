@@ -6,59 +6,38 @@ import Equipment from "../Equipment/Equipment";
 import s from "./Sidebar.module.css";
 
 export default function Sidebar({ onSearch }) {
-  const [filters, setFilters] = useState({
-    location: localStorage.getItem("location") || "",
-    vehicle: JSON.parse(localStorage.getItem("vehicle") || "[]"),
-    type: localStorage.getItem("type") || "",
-  });
+  const [isLocation, isSetLocation] = useState(
+    localStorage.getItem("location") || ""
+  );
+  const [isVehicle, isSetVehicle] = useState(
+    JSON.parse(localStorage.getItem("vehicle") || "[]")
+  );
+  const [isType, isSetType] = useState(localStorage.getItem("type") || "");
 
   useEffect(() => {
-    onSearch(filters);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("location", filters.location);
-    localStorage.setItem("vehicle", JSON.stringify(filters.vehicle));
-    localStorage.setItem("type", filters.type);
-
-    const hasFilters =
-      filters.location || filters.vehicle.length > 0 || filters.type.length > 0;
-
+    const hasFilters = isLocation || isVehicle.length > 0 || isType.length > 0;
     if (hasFilters) {
-      const searchFilters = {
-        location: filters.location,
-        form: filters.type,
-        transmission: filters.vehicle.includes("transmission")
-          ? "automatic"
-          : undefined,
-        ...filters.vehicle.reduce((acc, item) => {
-          if (item !== "transmission") {
-            acc[item] = true;
-          }
-          return acc;
-        }, {}),
+      const savedFilters = {
+        location: isLocation,
+        form: isType ? [isType] : [],
+        ...isVehicle.reduce((acc, item) => ({ ...acc, [item]: true }), {}),
       };
-      onSearch(searchFilters);
+      onSearch(savedFilters);
     } else {
       onSearch({});
     }
-  }, [filters]);
+  }, []);
 
-  const handleLocationChange = (e) =>
-    setFilters({ ...filters, location: e.target.value.trim() });
-
+  const handleLocationChange = (e) => isSetLocation(e.target.value.trim());
   const handleVehicleChange = (e) => {
     const { value, checked } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      vehicle: checked
-        ? [...prevFilters.vehicle, value]
-        : prevFilters.vehicle.filter((item) => item !== value),
-    }));
+    isSetVehicle((prevVehicle) =>
+      checked
+        ? [...prevVehicle, value]
+        : prevVehicle.filter((item) => item !== value)
+    );
   };
-
-  const handleTypeChange = (e) =>
-    setFilters({ ...filters, type: e.target.value });
+  const handleTypeChange = (e) => isSetType(e.target.value);
 
   return (
     <div>
@@ -66,7 +45,7 @@ export default function Sidebar({ onSearch }) {
         <li>
           <Location
             onChange={handleLocationChange}
-            selectedValues={filters.location}
+            selectedValues={isLocation}
           />
         </li>
         <li>
@@ -75,19 +54,26 @@ export default function Sidebar({ onSearch }) {
         <li>
           <Equipment
             onChange={handleVehicleChange}
-            selectedValues={filters.vehicle}
+            selectedValues={isVehicle}
           />
         </li>
         <li>
-          <Type onChange={handleTypeChange} selectedValues={filters.type} />
+          <Type onChange={handleTypeChange} selectedValues={isType} />
         </li>
       </ul>
       <button
         className={s.button}
         type="button"
-        onClick={() => onSearch(filters)}>
+        onClick={() => {
+          const savedFilters = {
+            location: isLocation,
+            form: isType ? [isType] : [],
+            ...isVehicle.reduce((acc, item) => ({ ...acc, [item]: true }), {}),
+          };
+          onSearch(savedFilters);
+        }}>
         Search
-      </button>
+      </button>{" "}
     </div>
   );
 }
