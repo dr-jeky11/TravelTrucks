@@ -1,28 +1,53 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectCampers } from "../../redux/selectors";
+import { selectCamperItems } from "../../redux/selectors";
+import { useEffect, useState } from "react";
+import { fetchCamper } from "../../redux/operations";
 
-import CamperCard from "../CamperCard/CamperCard";
-import { useEffect } from "react";
-import { fetchCampers } from "../../redux/operations";
+import Camper from "../Camper/Camper";
+import { LoaderBtn } from "../Loader/Loader";
 
-import s from "../CampersList/CampersList.module.css";
+import s from "./CampersList.module.css";
 
-export default function CampersList() {
+export default function CampersList({ filter }) {
   const dispatch = useDispatch();
-  const campers = useSelector(selectCampers);
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
+  const campers = useSelector(selectCamperItems);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    setVisibleCount(4);
+    dispatch(fetchCamper({ ...filter, limit: 4 }));
+  }, [dispatch, filter]);
+
+  const handleLoadMore = () => {
+    setLoading(true);
+    setTimeout(() => {
+      const remainingCampers = campers.length - visibleCount;
+      const loadMoreCount = remainingCampers >= 4 ? 4 : remainingCampers;
+      setVisibleCount((prevCount) => prevCount + loadMoreCount);
+      setLoading(false);
+    }, 2000);
+  };
   return (
-    <div className={s.listWrap}>
+    <div>
       <ul>
-        {campers.map((camper) => (
-          <li key={camper.id}>
-            <CamperCard camper={camper} />
+        {campers.slice(0, visibleCount).map((camper) => (
+          <li className={s.list} key={camper.id}>
+            <Camper camper={camper} />
           </li>
         ))}
       </ul>
+      {loading ? (
+        <LoaderBtn />
+      ) : (
+        campers.length > visibleCount && (
+          <div className={s.buttonContainer}>
+            <button onClick={handleLoadMore} className={s.button}>
+              Load more
+            </button>
+          </div>
+        )
+      )}
     </div>
   );
 }

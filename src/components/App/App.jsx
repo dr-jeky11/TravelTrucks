@@ -12,7 +12,7 @@ const NotFoundPage = lazy(() =>
 const CardFeatures = lazy(() => import("../CardFeatures/CardFeatures"));
 const CardReviews = lazy(() => import("../CardReviews/CardReviews"));
 
-import Loader from "../Loader/Loader";
+import { Loader } from "../Loader/Loader";
 
 export default function App() {
   return (
