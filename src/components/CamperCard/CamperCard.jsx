@@ -1,77 +1,43 @@
-import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
+import star from "../../img/star.svg";
+import location from "../../img/map-active.svg";
 
-import s from "../CamperCard/CamperCard.module.css";
+import s from "./CamperCard.module.css";
 
-export default function CamperCard({ camper }) {
-  const features = [
-    { label: "Kitchen", value: camper.kitchen },
-    { label: "Bathroom", value: camper.bathroom },
-    { label: "AC", value: camper.AC },
-    { label: "Gas", value: camper.gas },
-    { label: "Microwave", value: camper.microwave },
-    { label: "Refrigerator", value: camper.refrigerator },
-    { label: "Water", value: camper.water },
-    { label: "Radio", value: camper.radio },
-  ];
-
-  const visibleFeatures = features
-    .filter((feature) => feature.value)
-    .slice(0, 2);
-
+export default function CamperDetails({ camper }) {
   return (
-    <div className={s.camperCard}>
-      <aside className={s.aside}>
-        <img
-          className={s.pic}
-          src={camper.gallery[0].original}
-          alt="Camper"
-          width={292}
-          height={320}
-        />
-      </aside>
-      <div className={s.wrap}>
-        <h2 className={s.title}>{camper.name}</h2>
-        <p className={s.price}>${camper.price}.00</p>
-      </div>
-      <p className={s.reviews}>
-        {camper.rating}({camper.reviews.length} Reviews) {camper.location}
-      </p>
-      <p className={s.description}>{camper.description}</p>
-      <ul className={s.cardList}>
-        <li className={s.listItem}>{camper.transmission}</li>
-        <li className={s.listItem}>{camper.engine}</li>
-        {visibleFeatures.map((feature, index) => (
-          <li key={index} className={s.listItem}>
-            {feature.label}
+    <ul>
+      <li className={s.listOne}>
+        <ul className={s.listTitle}>
+          <li className={s.name}>{camper.name}</li>
+          <li>
+            <ul className={s.ratingLocation}>
+              <li className={s.reviews}>
+                <img className={s.locRev} src={star} alt="star" />
+                {camper.rating} Reviews
+              </li>
+              <li className={s.reviews}>
+                <img className={s.locImg} src={location} alt="location" />
+                {camper.location}
+              </li>
+            </ul>
           </li>
-        ))}
-      </ul>
-      <NavLink to={`/catalog/${camper.id}`} className={s.link}>
-        Show more
-      </NavLink>
-    </div>
+          <li className={s.priceNumber}>€{camper.price}.00</li>
+        </ul>
+      </li>
+      <li className={s.listImage}>
+        {Array.isArray(camper.gallery) && camper.gallery.length > 0 && (
+          <ul className={s.gallery}>
+            {camper.gallery.map((trump) => (
+              <li className={s.listImg} key={trump.thumb}>
+                <img className={s.img} src={trump.thumb} alt="" />
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+      <li className={s.description}>
+        <p className={s.desc}>{camper.description}</p>
+      </li>
+    </ul>
   );
 }
-CamperCard.propTypes = {
-  camper: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    rating: PropTypes.number,
-    price: PropTypes.number,
-    reviews: PropTypes.array,
-    location: PropTypes.string,
-    description: PropTypes.string,
-    transmission: PropTypes.string,
-    engine: PropTypes.string,
-    kitchen: PropTypes.bool,
-    bathroom: PropTypes.bool,
-    AC: PropTypes.bool,
-    gas: PropTypes.bool,
-    microwave: PropTypes.bool,
-    refrigerator: PropTypes.bool,
-    water: PropTypes.bool,
-    radio: PropTypes.bool,
-    gallery: PropTypes.array,
-    id: PropTypes.string,
-  }).isRequired,
-};

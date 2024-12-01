@@ -1,36 +1,54 @@
-import s from "../Type/Type.module.css";
-import Van from "../../img/Van.svg";
-import FullyIntegrated from "../../img/FullyIntegrated.svg";
-import Alcove from "../../img/Alcove.svg";
+import { useState } from "react";
 
-export default function Type() {
+import van from "../../img/van.svg";
+import fullyIntegrated from "../../img/FullyIntegrated.svg";
+import alcove from "../../img/Alcove.svg";
+
+import s from "./Type.module.css";
+
+export default function TypeVehicle({ onChange, selectedValues }) {
+  const [checkedItem, setCheckedItems] = useState(selectedValues || []);
+  const typeOptions = [
+    { value: "panelTruck", label: "Van", icon: van },
+    { value: "fullyIntegrated", label: "Fully Integrated", icon: fullyIntegrated },
+    { value: "alcove", label: "Alcove", icon: alcove },
+  ];
+
+  const handleRadioChange = (e) => {
+    const { value } = e.target;
+    const newValue = checkedItem === value ? "" : value;
+
+    setCheckedItems(newValue);
+    onChange({ target: { value: newValue, checked: !!newValue } });
+  };
+
   return (
-    <div>
-      <h3 className={s.title}>Vehicle type</h3>
+    <div className={s.container}>
+      <h2 className={s.title}>Vehicle type</h2>
       <hr className={s.line} />
-      <div className={s.radioGroup}>
-        <label className={s.radioCard}>
-          <input type="radio" name="vehicleType" />
-          <div className={s.icon}>
-            <img src={Van} />
-          </div>
-          Van
-        </label>
-        <label className={s.radioCard}>
-          <input type="radio" name="vehicleType" />
-          <div className={s.icon}>
-            <img src={FullyIntegrated} />
-          </div>
-          Fully Integrated
-        </label>
-        <label className={s.radioCard}>
-          <input type="radio" name="vehicleType" />
-          <div className={s.icon}>
-            <img src={Alcove} />
-          </div>
-          Alcove
-        </label>
-      </div>
+      <ul className={s.list}>
+        {typeOptions.map((type) => (
+          <li className={s.item} key={type.value}>
+            <label
+              className={`${s.label} ${
+                checkedItem === type.value ? s.checked : ""
+              }`}>
+              <input
+                type="radio"
+                value={type.value}
+                onChange={handleRadioChange}
+                onClick={() =>
+                  handleRadioChange({ target: { value: type.value } })
+                }
+                checked={checkedItem === type.value}
+                className={s.input}
+              />
+              <img className={s.img} src={type.icon} alt="q" />
+              <p className={s.ac}>{type.label}</p>
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

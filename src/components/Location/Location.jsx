@@ -1,9 +1,22 @@
-import s from "../Location/Location.module.css";
+import s from "./Location.module.css";
+import location from "../../img/map-active.svg";
 
-export default function Location() {
+export default function Location({ onChange, selectedValues }) {
   return (
-    <section className={s.section}>
-      <input type="text" className={s.text} placeholder="City" />
-    </section>
+    <div className={s.container}>
+      <p className={s.title}>Location</p>
+      <label>
+        <div className={s.locationContainer}>
+          <img src={location} alt="Location Icon" className={s.locationIcon} />
+          <input
+            type="text"
+            onChange={onChange}
+            value={selectedValues}
+            placeholder="City"
+            className={s.locationInput}
+          />
+        </div>
+      </label>
+    </div>
   );
 }
