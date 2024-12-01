@@ -1,29 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations";
+import { fetchCamper, idCamper } from "./operations.js";
+idCamper;
 
-const campersSlice = createSlice({
-  name: "campers",
+const camperSlice = createSlice({
+  name: "camper",
   initialState: {
+    total: 0,
     items: [],
+    idCamper: {},
     loading: false,
-    error: false,
+    error: null,
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCampers.pending, (state) => {
+      .addCase(fetchCamper.pending, (state) => {
         state.loading = true;
-        state.error = false;
       })
-      .addCase(fetchCampers.fulfilled, (state, action) => {
+      .addCase(fetchCamper.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = false;
-        state.items = action.payload;
+        state.items = action.payload.items;
+        state.total = action.payload.total;
       })
-      .addCase(fetchCampers.rejected, (state) => {
+      .addCase(fetchCamper.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.payload;
+      })
+      .addCase(idCamper.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(idCamper.fulfilled, (state, action) => {
+        state.loading = false;
+        state.idCamper = action.payload;
+      })
+      .addCase(idCamper.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export default campersSlice.reducer;
+export const camperReducer = camperSlice.reducer;
